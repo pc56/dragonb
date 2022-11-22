@@ -5,14 +5,20 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+puts "trash"
+
 Booking.destroy_all
 Dragon.destroy_all
 User.destroy_all
+
+puts "create users"
 
 celine = User.create!(email: "celine@hotmail.fr", password: "password", name: "Céline", phone_number: "0987654326", description: "Pasionnée des dragons depuis toute petite c'est avec grand plaisir que j'aime découvrir les dragons des autres et partager le mien.")
 pierre = User.create!(email: "pierre@gmail.fr", password: "password", name: "Pierre", phone_number: "0698714320", description: "Dragons Lover loue un petit dragon tout mignon.")
 samy = User.create!(email: "samy@free.fr", password: "password", name: "Samy", phone_number: "0698787621", description: "J'aime les dragons, savez vous comment ? Quand il crache du feuuuuuuuuuu!")
 denis = User.create!(email: "denis@free.fr", password: "password", name: "Denis", phone_number: "0963043289", description: "Les dragons c'est la vie, il faut les aimer aussi, c'est tellement splendide.")
+
+puts "create dragons"
 
 spyro = Dragon.create!(
   owner: celine,
@@ -133,3 +139,34 @@ dragonblanc = Dragon.create!(
 )
 file = File.open(Rails.root.join('db/seeds/images/dragons/dragonblanc.jpg'))
 dragonblanc.photo.attach(io: file, filename: "dragonblanc.jpg", content_type: "image/jpeg")
+
+puts "create bookings"
+
+Booking.create!(
+  dragon:      dragonblanc,
+  renter:        denis,
+  start_date: "2022-11-25",
+  end_date:   "2022-11-26",
+  status:      "pending",
+  total_price: 108
+)
+
+Booking.create!(
+  dragon:      pupuce,
+  renter:        denis,
+  start_date: "2022-11-15",
+  end_date:   "2022-11-17",
+  status:      "declined",
+  total_price: 178
+)
+
+Booking.create!(
+  dragon:      dracaufeu,
+  renter:        celine,
+  start_date: "2022-11-26",
+  end_date:   "2022-11-27",
+  status:      "accepted",
+  total_price: 109
+)
+
+puts "bookings gooooo"
