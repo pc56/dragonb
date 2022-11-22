@@ -1,19 +1,39 @@
-<div class="container">
+<div class="container mt-3">
   <div class="row">
-    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+    <div class="col-12">
       <h1>Les dragons</h1>
-      <ul class="list-group mb-3">
-        <% @dragons.each do |dragon| %>
-          <li class="list-group-item">
-            <%= link_to dragon.name, dragons_path(dragons) %>
-          </li>
-        <% end %>
-      </ul>
     </div>
   </div>
+
+    <div class="row">
+        <% @dragons.each do |dragon| %>
+          <div class="col-md-4">
+            <div class="card-dragon">
+            <div class="card-dragon-image" <%= cl_image_tag dragon.photo.key %>>
+            </div>
+            <div class="card-dragon-content">
+                <div class="card-dragon-title">
+                <h2><%= dragon.name %></h2>
+                </div>
+                <p><%= dragon.nature %></p>
+                <div class="flex">
+                <div class="flex align-items-center ms-3">
+                    <i class="fa-solid fa-dollar-sign"></i>
+                    <span><%= dragon.price_per_day %></span>
+                </div>
+                </div>
+            </div>
+            <div class="card-dragon-actions">
+                <%= link_to "View", dragon_path(dragon), class: "ms-3 text-primary" %>
+            </div>
+            </div>
+        </div>
+      <% end %>
+    </div>
 </div>
 
-<%# Afficher la photo de chaque dragon - photo Active Storage
-Afficher le nom de chacun des dragons - name
-Afficher la nature des dragons - nature
-Afficher le prix par jour - price_per_day %>
+
+<%# Photos du dragon
+Nom du dragon
+Nature
+Prix par jour %>
