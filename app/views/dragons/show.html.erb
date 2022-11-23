@@ -1,37 +1,17 @@
 <div class="container dragon py-5 d-flex justify-content-center" >
-  <div class="row">
 
-    <h1><%= @dragon.name%></h1>
+  <div class="card" style="width: 900px;">
 
-      <div class="d-flex justify-content-center">
-        <%= cl_image_tag @dragon.photo.key, height: 300, width: 400,  crop: :fill %>
-        <table class="table table-bordered">
-         <%# mettre border radius %>
-          <tbody>
-            <tr>
-              <th scope="row">Nature</th>
-              <td><%= @dragon.nature %></td>
-            </tr>
-            <tr>
-              <th scope="row">Description</th>
-              <td><%= @dragon.description %></td>
-            </tr>
-            <tr>
-              <th scope="row">Owner</th>
-              <td><%= @dragon.owner.name %></td>
-            </tr>
-              <tr>
-              <th scope="row">Price</th>
-              <td><%= @dragon.price_per_day %> $</td>
-            </tr>
-
-          </tbody>
-        </table>
-      </div>
-
-      <div><%= link_to "See all dragons", dragons_path %></div>
-      <div><%= link_to "Book a Dragon", new_user_registration_path%></div>
-
+    <div class="card-body">
+      <%= cl_image_tag @dragon.photo.key, height: 300, width: 400, class: "shadow-lg", crop: :fill %>
+      <h1><%= @dragon.name%></h1>
+      <p> <%= @dragon.nature  %></p>
+      <p> <%= @dragon.description %></p>
+      <p> Contact <%= @dragon.owner.name %></p>
+      <p class="card-text fa-solid fa-dollar-sign"> <%= @dragon.price_per_day %> </p>
+      <p><%= link_to("Book a Dragon", new_user_registration_path, {class: "btn btn-warning"}) %></p>
+      <p><%= link_to("See All Dragons", dragons_path, {class: "btn btn-warning"}) %></p>
+    </div>
 
   </div>
 </div>
