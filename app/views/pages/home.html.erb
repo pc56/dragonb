@@ -9,10 +9,45 @@
 </div>
 
 <div class="description-container">
-  <p>DragonB est le premier site de location de dragons. Nous mettons en lien les fans des plus créatures de ce monde avec les possesseurs pour vivre de grandes aventures. Partir en voyage sur le dos de ces magnifiques montures, se balader au fil de l'eau, dans la nature ou bien encore partir guerroyer face à vos rivaux ou ennemis, tout cela devient possible grace à DragonB.</p>
+  <div class="row d-flex justify-content-center">
+    <div class="card-home card-home-journey col-sm-4 border m-2 p-4">
+      <div class="card-home-image journey-image">
+        <%= image_tag("homepage-journey.png", size: "100x100", class: "img-fluid m-4") %>
+      </div>
+      <div class="card-home-infos text-center">
+        <div>
+          <h2>Partir en voyage</h2>
+          <p>Partez à l'aventure à dos de dragon et profiter de la vue !</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-home card-home-nature col-sm-4 border m-2 p-4">
+      <div class="card-home-image">
+          <%= image_tag("homepage-nature.png", size: "100x100", class: "img-fluid m-4") %>
+      </div>
+        <div class="card-home-infos text-center">
+          <div>
+            <h2>Partir en balade</h2>
+            <p>Promenez-vous avec votre nouveau compagnon dans des recoins champêtres ou encore au fil de l'eau !</p>
+          </div>
+        </div>
+    </div>
+    <div class="card-home card-home-fight col-sm-4 border m-2 p-4">
+      <div class="card-home-image">
+          <%= image_tag("homepage-fight.png", size: "100x100", class: "img-fluid  m-4") %>
+      </div>
+        <div class="card-home-infos text-center">
+          <div>
+            <h2>Combattez</h2>
+            <p>Un différend à régler ? Votre dragon de location est là pour vous aider !</p>
+          </div>
+        </div>
+    </div>
+  </div>
+  <%# <p>DragonB est le premier site de location de dragons. Nous mettons en lien les fans des plus créatures de ce monde avec les possesseurs pour vivre de grandes aventures. Partir en voyage sur le dos de ces magnifiques montures, se balader au fil de l'eau, dans la nature ou bien encore partir guerroyer face à vos rivaux ou ennemis, tout cela devient possible grace à DragonB.</p> %>
 </div>
 
-<div class="footer">
+<div class="footer" style="background-color:#f1f1f1">
   <div class="footer-links">
     <a href="https://github.com/pc56"><i class="fab fa-github"></i></a>
     <a href="https://www.instagram.com/dragon.official/"><i class="fab fa-instagram"></i></a>
