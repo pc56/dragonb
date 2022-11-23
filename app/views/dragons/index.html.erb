@@ -1,39 +1,22 @@
-<div class="container mt-3">
-  <div class="row">
-    <div class="col-12">
-      <h1>Les dragons</h1>
+<div class="container">
+  <div class="row mt-3">
+    <h1>Notre séléction unique de Dragon</h1>
+    <p>Louer son dragon sans se prendre la tête.</p>
+    <div class="grid">
+      <div class="g-col-6 g-col-md-4">
+        <% @dragons.each do |dragon| %>
+          <div class="card" style="width: w-auto;">
+            <div><%= cl_image_tag dragon.photo.key, width: 300, crop: :fill %></div>
+              <div class="card-body">
+                <h3 class="card-title"><%= dragon.name %></h3>
+                <p class="card-text"><%= dragon.nature %></p>
+                <p class="card-text fa-solid fa-dollar-sign"> <%= dragon.price_per_day %></p> <br>
+                <%= link_to "Voir le dragon", dragon_path(dragon), class:"btn btn-primary" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
-
-    <div class="row">
-        <% @dragons.each do |dragon| %>
-          <div class="col-md-4">
-            <div class="card-dragon">
-            <div class="card-dragon-image" <%= cl_image_tag dragon.photo.key %>>
-            </div>
-            <div class="card-dragon-content">
-                <div class="card-dragon-title">
-                <h2><%= dragon.name %></h2>
-                </div>
-                <p><%= dragon.nature %></p>
-                <div class="flex">
-                <div class="flex align-items-center ms-3">
-                    <i class="fa-solid fa-dollar-sign"></i>
-                    <span><%= dragon.price_per_day %></span>
-                </div>
-                </div>
-            </div>
-            <div class="card-dragon-actions">
-                <%= link_to "View", dragon_path(dragon), class: "ms-3 text-primary" %>
-            </div>
-            </div>
-        </div>
-      <% end %>
-    </div>
 </div>
-
-
-<%# Photos du dragon
-Nom du dragon
-Nature
-Prix par jour %>
