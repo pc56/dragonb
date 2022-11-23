@@ -7,11 +7,9 @@
       <h1><%= @dragon.name%></h1>
       <p> <%= @dragon.nature  %></p>
       <p> <%= @dragon.description %></p>
-      <p> Contact <%= @dragon.owner.name %></p>
-      <p class="card-text fa-solid fa-dollar-sign"> <%= @dragon.price_per_day %> </p>
+      <p> <strong>Contact :</strong> <%= @dragon.owner.name %></p>
+      <h3 class="card-text p-2"> <strong>$ <%= @dragon.price_per_day %></strong></h3>
       <p><%= link_to("Book a Dragon", new_user_registration_path, {class: "btn btn-warning"}) %></p>
-      <p><%= link_to("See All Dragons", dragons_path, {class: "btn btn-warning"}) %></p>
     </div>
-
   </div>
 </div>
