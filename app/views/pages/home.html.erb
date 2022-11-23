@@ -9,10 +9,45 @@
 </div>
 
 <div class="description-container">
-  <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+  <div class="row d-flex justify-content-center">
+    <div class="card-home card-home-journey col-sm-4 border m-2 p-4">
+      <div class="card-home-image journey-image">
+        <%= image_tag("homepage-journey.png", size: "100x100", class: "img-fluid m-4") %>
+      </div>
+      <div class="card-home-infos text-center">
+        <div>
+          <h2>Partir en voyage</h2>
+          <p>Partez à l'aventure à dos de dragon et profiter de la vue !</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-home card-home-nature col-sm-4 border m-2 p-4">
+      <div class="card-home-image">
+          <%= image_tag("homepage-nature.png", size: "100x100", class: "img-fluid m-4") %>
+      </div>
+        <div class="card-home-infos text-center">
+          <div>
+            <h2>Partir en balade</h2>
+            <p>Promenez-vous avec votre nouveau compagnon dans des recoins champêtres ou encore au fil de l'eau !</p>
+          </div>
+        </div>
+    </div>
+    <div class="card-home card-home-fight col-sm-4 border m-2 p-4">
+      <div class="card-home-image">
+          <%= image_tag("homepage-fight.png", size: "100x100", class: "img-fluid  m-4") %>
+      </div>
+        <div class="card-home-infos text-center">
+          <div>
+            <h2>Combattez</h2>
+            <p>Un différend à régler ? Votre dragon de location est là pour vous aider !</p>
+          </div>
+        </div>
+    </div>
+  </div>
+  <%# <p>DragonB est le premier site de location de dragons. Nous mettons en lien les fans des plus créatures de ce monde avec les possesseurs pour vivre de grandes aventures. Partir en voyage sur le dos de ces magnifiques montures, se balader au fil de l'eau, dans la nature ou bien encore partir guerroyer face à vos rivaux ou ennemis, tout cela devient possible grace à DragonB.</p> %>
 </div>
 
-<div class="footer">
+<div class="footer" style="background-color:#f1f1f1">
   <div class="footer-links">
     <a href="https://github.com/pc56"><i class="fab fa-github"></i></a>
     <a href="https://www.instagram.com/dragon.official/"><i class="fab fa-instagram"></i></a>
@@ -21,7 +56,7 @@
     <a href="https://fr.linkedin.com/company/groupe-dragon"><i class="fab fa-linkedin"></i></a>
   </div>
   <div class="footer-copyright">
-    This footer is made with <i class="fas fa-heart"></i> by Céline, Denis, Pierre and Samy
+    This website is made with <i class="fas fa-heart"></i> by Céline, Denis, Pierre and Samy
   </div>
 </div>
 
