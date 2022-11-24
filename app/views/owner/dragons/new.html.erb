@@ -5,11 +5,11 @@
   <br>
     <%= simple_form_for([:owner, @dragon]) do |f| %>
       <%= f.input :name, label:"Nom" %>
-      <%= f.input :nature %>
+      <%= f.input :nature, as: :check_boxes, collection: Dragon::NATURE %>
       <%= f.input :description %>
-      <%= f.input :price_per_day, label:"Prix/jour" %>
+      <%= f.input :price_per_day, label:"Prix/jour (€)" %>
       <%= f.input :photo, as: :file, label: "Ajouter une photo" %>
-      <%= f.submit "Créer son dragon", class:"btn btn-primary" %>
+      <%= f.submit "Ajouter son dragon", class:"btn btn-primary" %>
     <% end %>
   </div>
 </div>
