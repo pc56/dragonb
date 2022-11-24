@@ -1,4 +1,4 @@
-class BookingsController < ActionController::Base
+class BookingsController < ApplicationController
 
   def create
     @dragon = Dragon.find(params[:dragon_id])
