@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :bookings, only: %i[new create]
   end
 
-  namespace :owner do
+  namespace :owner do # permet de faire sous catégories de user
     resources :dragons, only: %i[new create]
     resources :bookings, only: [] do
       member do

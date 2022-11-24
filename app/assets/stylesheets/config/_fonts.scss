@@ -1,9 +1,10 @@
 // Import Google fonts
 // @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Rubik+Puddles&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Rubik+Puddles&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap');
 // Define fonts for body and headers
-$body-font: "Partrick Hand", "Helvetica", "sans-serif";
-$headers-font: "Partrick Hand", "Helvetica", "sans-serif";
+$body-font: "Roboto", "Helvetica", "sans-serif";
+$headers-font: "Roboto", "Helvetica", "sans-serif";
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {
