@@ -8,7 +8,17 @@
               <%= cl_image_tag dragon.photo.key, height: 250, crop: :fill  %>
               <div class="card-body m-1">
                 <h3 class="card-title"><%= dragon.name %></h3>
-                <p class="card-text"><%= image_tag "force.png", width: 20, height: 20, crop: :fill %> <%= dragon.nature %></p>
+                <div>
+                  <% if dragon.nature == "Air" %>
+                    <%= image_tag("vent.png", size: "40x40", :style => 'background-color: #e9ecef; border: 2px solid black; border-radius: 50%; padding: 5px;') %>
+                  <% elsif dragon.nature == "Feu" %>
+                    <%= image_tag("feu.png", size: "40x40", :style => 'background-color: #e9ecef; border: 2px solid black; border-radius: 50%; padding: 5px;') %>
+                  <% elsif dragon.nature == "Eau" %>
+                    <%= image_tag("eau.png", size: "40x40", :style => 'background-color: #e9ecef; border: 2px solid black; border-radius: 50%; padding: 5px;') %>
+                  <% else dragon.nature == "Terre" %>
+                    <%= image_tag("terre.png", size: "40x40", :style => 'background-color: #e9ecef; border: 2px solid black; border-radius: 50%; padding: 5px;') %>
+                  <% end %>
+                </div>
                 <h3 class="card-text text-end"> <strong>€ <%= dragon.price_per_day %></strong></h3>
               </div>
             <% end %>
