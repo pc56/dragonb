@@ -132,7 +132,7 @@ haku.photo.attach(io: file, filename: "haku.jpg", content_type: "image/jpeg")
 
 dragonblanc = Dragon.create!(
   owner: pierre,
-  name: "Dragon blanc aux yeux bleus",
+  name: "Dragon blanc",
   nature: "Eau",
   description: "Ce puissant dragon peut faire peur au premier abord, mais il saura se montrer très affectif et joueur aussi bien avec les enfants que les adultes. Si vous êtes friand de voyages à dos de dragon ou un simple amateur de destruction, il saura combler vos envies diverses.",
   price_per_day: 108,

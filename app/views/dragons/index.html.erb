@@ -1,21 +1,19 @@
-<div class=container>
-  <div class="container p-3">
-    <h1><strong>Notre sélection unique de Dragon</strong></h1>
-    <p>Louer son dragon sans se prendre la tête.</p>
-    <div class="wrapper">
-      <% @dragons.each do |dragon| %>
-        <div class="border m-2 p-4">
-          <div class="card position-relative m-2 p-4">
-            <div class="text-center shadow-lg"><%= cl_image_tag dragon.photo.key, height: 150, width: 250 %></div>
-            <div class="card-body">
-              <h3 class="card-title"><%= dragon.name %></h3>
-              <p class="card-text"><%= dragon.nature %></p>
-              <p class="card-text fa-solid fa-dollar-sign"> <%= dragon.price_per_day %></p>
-              <div class="text-center"><%= link_to "Voir le dragon", dragon_path(dragon), class:"btn btn-warning" %></div>
-            </div>
+  <div class= "container" >
+    <div class="container m-3">
+      <h1><strong>Notre sélection unique de Dragons</strong></h1>
+      <p>Louer son dragon sans se prendre la tête.</p>
+      <div class="wrapper">
+        <% @dragons.each do |dragon| %>
+            <div class="card m-2" style ="object-fit-content"><%= link_to dragon, class: "card" do %>
+              <%= cl_image_tag dragon.photo.key, height: 250, crop: :fill  %>
+              <div class="card-body m-1">
+                <h3 class="card-title"><%= dragon.name %></h3>
+                <p class="card-text"><%= image_tag "force.png", width: 20, height: 20, crop: :fill %> <%= dragon.nature %></p>
+                <h3 class="card-text text-end"> <strong>€ <%= dragon.price_per_day %></strong></h3>
+              </div>
+            <% end %>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
-  </div>
 </div>
