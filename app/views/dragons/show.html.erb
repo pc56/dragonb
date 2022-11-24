@@ -5,34 +5,56 @@
     <div class="card-body">
 
 
-    <div class="row my-2">
-      <div class="col">
+    <div class="row">
+      <div class="col 6 m-2">
+
         <%= cl_image_tag @dragon.photo.key, height: 300, width: 400, class: "shadow-lg", crop: :fill %>
-        <h1><%= @dragon.name%></h1>
-        <div class="col">
-        <%= simple_form_for([@dragon, @booking]) do |f| %>
+
+
+      </div>
+
+        <div class="col 6 d-flex align-items-center">
+          <div class="flex-grow-1">
+
+        <div class="me-4"><%= simple_form_for([@dragon, @booking]) do |f| %>
           <%= f.input :start_date, as: :date, html5: true %>
           <%= f.input :end_date, as: :date, html5: true %>
           <%= link_to("Réserver", new_user_registration_path, {class: "btn btn-warning"}) %>
         <% end %>
         </div>
+         </div>
+
+
+        </div>
+
+    </div class="row">
+      <div class="col 12 m-2">
+        <h1><%= @dragon.name%></h1>
       </div>
+
+<div class="row">
+    <div class="col 2">
+        <% if @dragon.nature == "Air" %>
+            <%= image_tag("vent.png", size: "40x40", :style => 'background-color: #e9ecef; border: 2px solid black; border-radius: 50%; padding: 5px;') %>
+        <% elsif @dragon.nature == "Feu" %>
+            <%= image_tag("feu.png", size: "40x40", :style => 'background-color: #e9ecef; border: 2px solid black; border-radius: 50%; padding: 5px;') %>
+        <% elsif @dragon.nature == "Eau" %>
+            <%= image_tag("eau.png", size: "40x40", :style => 'background-color: #e9ecef; border: 2px solid black; border-radius: 50%; padding: 5px;') %>
+        <% else @dragon.nature == "Terre" %>
+            <%= image_tag("terre.png", size: "40x40", :style => 'background-color: #e9ecef; border: 2px solid black; border-radius: 50%; padding: 5px;') %>
+        <% end %>
     </div>
 
-        <% if @dragon.nature == "Air" %>
-            <%= image_tag("vent.png", size: "40x40", :style => 'background-color: #e9ecef; border: 1px solid grey; border-radius: 50%; padding: 5px;') %>
-        <% elsif @dragon.nature == "Feu" %>
-            <%= image_tag("feu.png", size: "40x40", :style => 'background-color: #e9ecef; border: 1px solid grey; border-radius: 50%; padding: 5px;') %>
-        <% elsif @dragon.nature == "Eau" %>
-            <%= image_tag("eau.png", size: "40x40", :style => 'background-color: #e9ecef; border: 1px solid grey; border-radius: 50%; padding: 5px;') %>
-        <% else @dragon.nature == "Terre" %>
-            <%= image_tag("terre.png", size: "40x40", :style => 'background-color: #e9ecef; border: 1px solid grey; border-radius: 50%; padding: 5px; mb-20;') %>
-        <% end %>
+    <div class="col 2">
+        <p><%= image_tag("user.png", size: "40x40", :style => 'background-color: #e9ecef; border: 2px solid black; border-radius: 50%; padding: 5px.') %>
+        <em><%= @dragon.owner.name %></em></p>
+    </div>
+</div>
 
       <p><br> <%= @dragon.description %></p>
-      <p><%= image_tag("user.png", size: "40x40") %>
-        <em><%= @dragon.owner.name %></em></p>
+
       <h3 class="card-text text-end"> <strong>€ <%= @dragon.price_per_day %></strong></h3>
+      </div>
     </div>
   </div>
 </div>
