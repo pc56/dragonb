@@ -1,8 +1,10 @@
 <div class = "align-content d-flex flex-wrap" style= "margin-right: 120px; justify-content: center">
   <br>
   <div class=" p-2" style="width: 200px;">
-     <button type="button" class="btn btn-success" style="
-     margin-left: 50%; width: 100%;">Réserver un dragon</button>
+     <div style="
+     margin-left: 50%; width: 100%;">
+     <%= link_to("Book a Dragon", dragons_path, {class: " btn btn-success text-decoration-none"}) %>
+     </div>
   </div>
   <div class = " p-2" style="width: 200px;">
     <button type="button" class="btn btn-warning" style="
@@ -15,13 +17,22 @@
 <h1>Mon Profil</h1>
 <br>
 <h3>Mes dragons</h3>
-
-<div class = "d-flex flex-wrap" style = " justify-content: space-between;">
-  <% @dragons.each do |dragon| %>
-     <div class="card-dragon-image">
-       <%= cl_image_tag dragon.photo.key, height: 300, class: "rounded-circle" ,width: 300, crop: :fill, gravity: :face %>
-     </div>
-  <% end %>
+<div class= "container" >
+  <div class="container m-3">
+    <div class="wrapper" style = " justify-content: space-evenly;">
+      <% @dragons.each do |dragon| %>
+          <div class="card m-2" style ="object-fit-content"><%= link_to dragon_path(dragon) , class: "card" do %>
+            <%= cl_image_tag dragon.photo.key, height: 250, crop: :fill  %>
+            <div class="card-body m-1">
+              <h3 class="card-title"><%= dragon.name %></h3>
+              <p class="card-text"> <%= dragon.nature %></p>
+              <h3 class="card-text text-end"> <strong>€ <%= dragon.price_per_day %></strong></h3>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
 <br>
 <br>
@@ -29,19 +40,48 @@
 <h2> Mes réservations actuelles</h2>
 <br>
 <br>
-<div class = "d-flex flex-wrap" style = "justify-content: space-evenly;">
-  <% @bookings.each do |booking| %>
-  <div class="card-group-bookings border border-dark">
-    <div class="card-booking">
-      <%= cl_image_tag booking.dragon.photo.key, height: 300, class: "rounded-pill" ,width: 300, crop: :fill, gravity: :face %>
-      <div class="card-body">
-        <h5 class="card-title"><%booking.dragon%></h5>
-        <p class="card-text"><%booking.dragon.description%></p>
-        <p class="card-text"><small class="text-muted">Date de début : <%= booking.start_date%></small></p>
-        <p class="card-text"><small class="text-muted"> Date de fin: <%= booking.end_date%></small></p>
-      </div>
-   </div>
+
+
+<div class= "container" >
+  <div class="container m-3">
+    <div class="wrapper">
+      <% @bookings.each do |booking| %>
+          <div class="card m-2" style ="object-fit-content"><%= link_to dragon_path(Dragon.find(booking.dragon_id)) , class: "card" do %>
+            <%= cl_image_tag booking.dragon.photo.key, height: 250, crop: :fill  %>
+            <div class="card-body m-1">
+              <h3 class="card-title"><%= Dragon.find(booking.dragon_id).name %></h3>
+              <p class="card-text"> <%= Dragon.find(booking.dragon_id).nature %></p>
+              <h3 class="card-text text-end"> <strong>€ <%= Dragon.find(booking.dragon_id).price_per_day %></strong></h3>
+              <small class="card-text text-start"> <strong> date de début : <%= booking.start_date %></strong></small> <br>
+              <small class="card-text text-start"> <strong> date de fin :<%= booking.end_date %></strong></small>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
-  <% end %>
 </div>
-<br><br>
+<br>
+
+<h2> Mes dragons en cours de réservation</h2>
+<br>
+<br>
+
+<div class= "container" >
+  <div class="container m-3">
+    <div class="wrapper" style = " justify-content: space-evenly;">
+      <% @bookings.each do |booking| %>
+          <% if dragon.%>
+          <div class="card m-2" style ="object-fit-content"><%= link_to dragon_path(dragon) , class: "card" do %>
+            <%= cl_image_tag dragon.photo.key, height: 250, crop: :fill  %>
+            <div class="card-body m-1">
+              <h3 class="card-title"><%= dragon.name %></h3>
+              <p class="card-text"> <%= dragon.nature %></p>
+              <h3 class="card-text text-end"> <strong>€ <%= dragon.price_per_day %></strong></h3>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
