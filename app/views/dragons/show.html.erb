@@ -54,3 +54,36 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+<div class="container">
+  <section class="mx-auto my-5" style="max-width: 23rem;">
+
+    <div class="card">
+        <div class="card-body">
+        <h5 class="card-title font-weight-bold"><%= @dragon.price_per_day %> € / jour</h5>
+        <hr class="my-4" />
+        <div class="me"><%= simple_form_for([@dragon, @booking]) do |f| %>
+        <%= f.input :start_date, as: :date, html5: true, label: "Début" %>
+        <%= f.input :end_date, as: :date, html5: true, label: "Fin" %>
+          <% if user_signed_in? %>
+            <%= f.submit "Réserver", class: "btn btn-warning align-text-center" %>
+          <% else %>
+          <%= link_to("Connexion", new_user_registration_path, {class: "btn btn-warning"}) %>
+        <% end %>
+        <% end %>
+        <hr class="my-4" />
+        <h5 class="card-text text-center">
+        <%= @dragon.price_per_day %> x 5 jours </h5>
+        <hr class="my-4" />
+        <h5 class="card-text text-center">
+        Total = <%= @dragon.price_per_day %> € </h5>
+
+      </div>
+    </div>
+
+  </section>
+</div>
