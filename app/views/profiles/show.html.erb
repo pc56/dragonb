@@ -1,14 +1,16 @@
 <div class = "align-content d-flex flex-wrap" style= "margin-right: 120px; justify-content: center">
   <br>
   <div class=" p-2" style="width: 200px;">
-     <div style="
-     margin-left: 50%; width: 100%;">
-     <%= link_to("Book a Dragon", dragons_path, {class: " btn btn-success text-decoration-none"}) %>
-     </div>
+    <div style="
+    margin-left: 50%; width: 100%;">
+    <%= link_to("Réserver un dragon", dragons_path, {class: " btn btn-success text-decoration-none"}) %>
+    </div>
   </div>
   <div class = " p-2" style="width: 200px;">
-    <button type="button" class="btn btn-warning" style="
-     margin-left: 50%; width: 100%;">Créer un dragon</button>
+    <div style="
+    margin-left: 50%; width: 100%;">
+    <%= link_to("Ajouter un dragon", new_owner_dragon_path, {class: " btn btn-warning text-decoration-none"}) %>
+    </div>
   </div>
 </div>
 
