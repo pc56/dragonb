@@ -8,7 +8,7 @@ class ProfilesController < ApplicationController
     @reservations = Booking.includes(:dragon).where(dragons: { owner: @user })
   end
 
-
+  
 
   private
 

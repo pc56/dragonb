@@ -37,38 +37,83 @@
 <br>
 <br>
 <br>
-<h2> Mes réservations actuelles</h2>
+
 <br>
 <br>
 
 
-<div class= "container" >
+
+<div class= "container mb-5" >
+  <h2> Mes demandes de réservation</h2>
   <div class="container m-3">
     <div class="wrapper">
       <% @bookings.each do |booking| %>
-          <div class="card m-2" style ="object-fit-content"><%= link_to dragon_path(Dragon.find(booking.dragon_id)) , class: "card" do %>
+      <% if booking.status == "declined" %>
+          <%= link_to dragon_path(Dragon.find(booking.dragon_id)) , class: "card m-2 position-relative" do %>
+
+              <div class="card opacity-50" style ="object-fit-content">
+                <%= cl_image_tag booking.dragon.photo.key, height: 250, crop: :fill  %>
+                <div class="card-body m-1">
+                  <h3 class="card-title"><%= Dragon.find(booking.dragon_id).name %></h3>
+                  <p class="card-text"> <%= Dragon.find(booking.dragon_id).nature %></p>
+                  <h3 class="card-text text-end"> <strong>€ <%= Dragon.find(booking.dragon_id).price_per_day %></strong></h3>
+                  <small class="card-text text-start"> <strong> date de début : <%= booking.start_date %></strong></small> <br>
+                  <small class="card-text text-start"> <strong> date de fin : <%= booking.end_date %></strong></small>
+                </div>
+              </div>
+
+              <div class = "position-absolute top-0 end-0">
+                <span class="badge rounded-pill bg-danger">Refusé</span>
+              </div>
+
+            <% end %>
+      <% elsif  booking.status == "pending" %>
+      <div class="card m-2 position-relative" style ="object-fit-content"><%= link_to dragon_path(Dragon.find(booking.dragon_id)) , class: "card" do %>
+
+            <div class = "position-absolute top-0 end-0">
+            <span class="badge rounded-pill bg-secondary"> En attente </span>
+            </div>
+
             <%= cl_image_tag booking.dragon.photo.key, height: 250, crop: :fill  %>
             <div class="card-body m-1">
               <h3 class="card-title"><%= Dragon.find(booking.dragon_id).name %></h3>
               <p class="card-text"> <%= Dragon.find(booking.dragon_id).nature %></p>
               <h3 class="card-text text-end"> <strong>€ <%= Dragon.find(booking.dragon_id).price_per_day %></strong></h3>
               <small class="card-text text-start"> <strong> date de début : <%= booking.start_date %></strong></small> <br>
-              <small class="card-text text-start"> <strong> date de fin :<%= booking.end_date %></strong></small>
+              <small class="card-text text-start"> <strong> date de fin : <%= booking.end_date %></strong></small>
             </div>
           <% end %>
-        </div>
+          </div>
+        <%  else booking.status == "accepted"%>
+          <div class="card m-2 position-relative" style ="object-fit-content"><%= link_to dragon_path(Dragon.find(booking.dragon_id)) , class: "card" do %>
+
+            <div class = "position-absolute top-0 end-0">
+            <span class="badge rounded-pill bg-success"> Accepté </span>
+            </div>
+
+            <%= cl_image_tag booking.dragon.photo.key, height: 250, crop: :fill  %>
+            <div class="card-body m-1">
+              <h3 class="card-title"><%= Dragon.find(booking.dragon_id).name %></h3>
+              <p class="card-text"> <%= Dragon.find(booking.dragon_id).nature %></p>
+              <h3 class="card-text text-end"> <strong>€ <%= Dragon.find(booking.dragon_id).price_per_day %></strong></h3>
+              <small class="card-text text-start"> <strong> date de début : <%= booking.start_date %></strong></small> <br>
+              <small class="card-text text-start"> <strong> date de fin : <%= booking.end_date %></strong></small>
+            </div>
+          <% end %>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>
 </div>
-<br>
-
-<h2> Mes dragons en cours de réservation</h2>
-<br>
-<br>
 
 
-<div class= "container" >
+
+
+
+
+<div class= "container mb-3" >
+  <h2> Mes dragons en cours de réservation</h2>
   <div class="container m-3">
     <div class="wrapper">
       <% @reservations.each do |booking| %>
