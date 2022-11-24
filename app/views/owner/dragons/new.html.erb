@@ -1,0 +1,16 @@
+<div class="container mt-4">
+<div class="row justify-content-center">
+  <div class="col-6 mb-4">
+  <h2>Ajouter mon dragon</h2>
+  <br>
+    <%= simple_form_for([:owner, @dragon]) do |f| %>
+      <%= f.input :name, label:"Nom" %>
+      <%= f.input :nature %>
+      <%= f.input :description %>
+      <%= f.input :price_per_day, label:"Prix/jour" %>
+      <%= f.input :photo, as: :file, label: "Ajouter une photo" %>
+      <%= f.submit "Créer son dragon", class:"btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+</div>
