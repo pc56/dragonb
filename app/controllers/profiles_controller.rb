@@ -4,6 +4,8 @@ class ProfilesController < ApplicationController
   def show
     @dragons = @user.dragons
     @bookings = @user.bookings
+
+    @reservations = Booking.includes(:dragon).where(dragons: { owner: @user })
   end
 
 

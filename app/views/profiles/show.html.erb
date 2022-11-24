@@ -67,17 +67,19 @@
 <br>
 <br>
 
+
 <div class= "container" >
   <div class="container m-3">
-    <div class="wrapper" style = " justify-content: space-evenly;">
-      <% @bookings.each do |booking| %>
-          <% if dragon.%>
-          <div class="card m-2" style ="object-fit-content"><%= link_to dragon_path(dragon) , class: "card" do %>
-            <%= cl_image_tag dragon.photo.key, height: 250, crop: :fill  %>
+    <div class="wrapper">
+      <% @reservations.each do |booking| %>
+          <div class="card m-2" style ="object-fit-content"><%= link_to dragon_path(Dragon.find(booking.dragon_id)) , class: "card" do %>
+            <%= cl_image_tag booking.dragon.photo.key, height: 250, crop: :fill  %>
             <div class="card-body m-1">
-              <h3 class="card-title"><%= dragon.name %></h3>
-              <p class="card-text"> <%= dragon.nature %></p>
-              <h3 class="card-text text-end"> <strong>€ <%= dragon.price_per_day %></strong></h3>
+              <h3 class="card-title"><%= Dragon.find(booking.dragon_id).name %></h3>
+              <p class="card-text"> <%= Dragon.find(booking.dragon_id).nature %></p>
+              <h3 class="card-text text-end"> <strong>€ <%= Dragon.find(booking.dragon_id).price_per_day %></strong></h3>
+              <small class="card-text text-start"> <strong> date de début : <%= booking.start_date %></strong></small> <br>
+              <small class="card-text text-start"> <strong> date de fin :<%= booking.end_date %></strong></small>
             </div>
           <% end %>
         </div>
