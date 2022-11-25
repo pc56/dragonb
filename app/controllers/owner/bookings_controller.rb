@@ -11,7 +11,7 @@ class Owner::BookingsController < ApplicationController
     @reservations = Booking.includes(:dragon).where(dragons: { owner: @user })
     @reservation = Booking.find(params[:id])
     @reservation.update(:status => 'accepted')
-    redirect_to dragons_path
+    redirect_to profile_path
 
     # @reservations.each do |reservation|
     #   @renter = User.find(reservation.renter_id)
@@ -22,7 +22,7 @@ class Owner::BookingsController < ApplicationController
     @reservations = Booking.includes(:dragon).where(dragons: { owner: @user })
     @reservation = Booking.find(params[:id])
     @reservation.update(:status => 'declined')
-    redirect_to dragons_path
+    redirect_to profile_path
   end
 
 
