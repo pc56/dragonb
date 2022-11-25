@@ -3,35 +3,36 @@
   <div class=" p-2" style="width: 200px;">
      <div style="
      margin-left: 50%; width: 100%;">
-     <%= link_to("Book a Dragon", dragons_path, {class: " btn btn-success text-decoration-none"}) %>
+     <%= link_to("Créer un dragon", dragons_path, {class: " btn btn-success text-decoration-none"}) %>
      </div>
-  </div>
-  <div class = " p-2" style="width: 200px;">
-    <button type="button" class="btn btn-warning" style="
-     margin-left: 50%; width: 100%;">Créer un dragon</button>
   </div>
 </div>
 
-<br>
-<br>
-<h1>Mon Profil</h1>
-<br>
-<h3>Mes dragons</h3>
-<div class= "container" >
-  <div class="container m-3">
-    <div class="wrapper" style = " justify-content: space-evenly;">
-      <% @dragons.each do |dragon| %>
-          <div class="card m-2" style ="object-fit-content"><%= link_to dragon_path(dragon) , class: "card" do %>
-            <%= cl_image_tag dragon.photo.key, height: 250, crop: :fill  %>
-            <div class="card-body m-1">
-              <h3 class="card-title"><%= dragon.name %></h3>
-              <p class="card-text"> <%= dragon.nature %></p>
-              <h3 class="card-text text-end"> <strong>€ <%= dragon.price_per_day %></strong></h3>
-            </div>
+
+
+
+
+
+<div class= "container mb-3" >
+  <div class="container m-3 mb-5">
+    <h1>Mon Profil</h1> <br> <br>
+    <h2>Mes dragons</h2>
+      <div class="wrapper mt-5">
+       <% @dragons.each do |dragon| %>
+          <%= link_to dragon_path(dragon) , class: "card m-2 position-relative" do %>
+              <div class="card" style ="object-fit-content">
+                <%= cl_image_tag dragon.photo.key, height: 250, crop: :fill  %>
+                <div class="card-body m-1">
+                  <h3 class="card-title"><%= dragon.name %></h3>
+                  <p class="card-text"> <%= dragon.nature %></p>
+                  <h3 class="card-text text-end"> <strong>€ <%= dragon.price_per_day %></strong></h3>
+                </div>
+              </div>
+
+
           <% end %>
-        </div>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
   </div>
 </div>
 <br>
@@ -44,9 +45,9 @@
 
 
 <div class= "container mb-5" >
-  <h2> Mes demandes de réservation</h2>
   <div class="container m-3">
-    <div class="wrapper">
+    <h2> Mes demandes de réservation</h2>
+    <div class="wrapper mt-5">
       <% @bookings.each do |booking| %>
       <% if booking.status == "declined" %>
           <%= link_to dragon_path(Dragon.find(booking.dragon_id)) , class: "card m-2 position-relative" do %>
@@ -113,22 +114,41 @@
 
 
 <div class= "container mb-3" >
-  <h2> Mes dragons en cours de réservation</h2>
-  <div class="container m-3">
-    <div class="wrapper">
-      <% @reservations.each do |booking| %>
-          <div class="card m-2" style ="object-fit-content"><%= link_to dragon_path(Dragon.find(booking.dragon_id)) , class: "card" do %>
-            <%= cl_image_tag booking.dragon.photo.key, height: 250, crop: :fill  %>
-            <div class="card-body m-1">
-              <h3 class="card-title"><%= Dragon.find(booking.dragon_id).name %></h3>
-              <p class="card-text"> <%= Dragon.find(booking.dragon_id).nature %></p>
-              <h3 class="card-text text-end"> <strong>€ <%= Dragon.find(booking.dragon_id).price_per_day %></strong></h3>
-              <small class="card-text text-start"> <strong> date de début : <%= booking.start_date %></strong></small> <br>
-              <small class="card-text text-start"> <strong> date de fin :<%= booking.end_date %></strong></small>
-            </div>
+  <div class="container m-3 mb-5">
+    <h2> Mes dragons en cours de réservation</h2>
+      <div class="wrapper mt-5">
+       <% @reservations.each do |reservation| %>
+         <% if reservation.status == "pending" %>
+          <%= link_to dragon_path(Dragon.find(reservation.dragon_id)) , class: "card m-2" do %>
+              <div class="card" style ="object-fit-content">
+                <%= cl_image_tag reservation.dragon.photo.key, height: 250, crop: :fill  %>
+                <div class="card-body m-1">
+                  <h3 class="card-title"><%= Dragon.find(reservation.dragon_id).name %></h3>
+                  <p class="card-text"> <%= Dragon.find(reservation.dragon_id).nature %></p>
+                  <h3 class="card-text text-end"> <strong>€ <%= Dragon.find(reservation.dragon_id).price_per_day %></strong></h3>
+                  <small class="card-text text-start"> <strong> date de début : <%= reservation.start_date %></strong></small> <br>
+                  <small class="card-text text-start"> <strong> date de fin : <%= reservation.end_date %></strong></small>
+                  <small class="card-text text-start"> <%= link_to "accepter", accept_owner_booking_path(reservation), class: "btn btn-primary "%></small>
+                  <small class="card-text text-start"> <%= link_to "refuser", decline_owner_booking_path(reservation), class: "btn btn-danger "%></small>
+                </div>
+              </div>
           <% end %>
-        </div>
-      <% end %>
-    </div>
+         <% else %>
+           <%= link_to dragon_path(Dragon.find(reservation.dragon_id)) , class: "card m-2 position-relative" do %>
+
+              <div class="card" style ="object-fit-content">
+                <%= cl_image_tag reservation.dragon.photo.key, height: 250, crop: :fill  %>
+                <div class="card-body m-1">
+                  <h3 class="card-title"><%= Dragon.find(reservation.dragon_id).name %></h3>
+                  <p class="card-text"> <%= Dragon.find(reservation.dragon_id).nature %></p>
+                  <h3 class="card-text text-end"> <strong>€ <%= Dragon.find(reservation.dragon_id).price_per_day %></strong></h3>
+                  <small class="card-text text-start"> <strong> date de début : <%= reservation.start_date %></strong></small> <br>
+                  <small class="card-text text-start"> <strong> date de fin : <%= reservation.end_date %></strong></small>
+                </div>
+              </div>
+            <%end %>
+         <% end %>
+        <% end %>
+      </div>
   </div>
 </div>
