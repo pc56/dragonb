@@ -5,5 +5,9 @@ class Dragon < ApplicationRecord
   belongs_to :owner, class_name: "User"
   has_many :bookings
 
-  validates :nature, inclusion: { in: NATURE }
+  validates :name, presence: true
+  validates :nature, presence: true, inclusion: { in: NATURE }
+  validates :description, presence: true
+  validates :price_per_day, presence: true
+  # validates :photo, presence: true
 end

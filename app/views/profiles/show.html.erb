@@ -124,6 +124,9 @@
          <% if reservation.status == "pending" %>
           <%= link_to dragon_path(Dragon.find(reservation.dragon_id)) , class: "card m-2" do %>
               <div class="card" style ="object-fit-content">
+                <div class="card-body m-1">
+                  <%= User.find(reservation.renter_id).name %> souhaite louer :
+                </div>
                 <%= cl_image_tag reservation.dragon.photo.key, height: 250, crop: :fill  %>
                 <div class="card-body m-1">
                   <h3 class="card-title"><%= Dragon.find(reservation.dragon_id).name %></h3>
@@ -136,10 +139,28 @@
                 </div>
               </div>
           <% end %>
+         <% elsif reservation.status == "accepted"%>
+           <%= link_to dragon_path(Dragon.find(reservation.dragon_id)) , class: "card m-2 position-relative" do %>
+              <div class="card" style ="object-fit-content">
+                <div class="card-body m-1">
+                  <%= Dragon.find(reservation.dragon_id).name %> est réservé par <%= User.find(reservation.renter_id).name %>
+                </div>
+                <%= cl_image_tag reservation.dragon.photo.key, height: 250, crop: :fill  %>
+                <div class="card-body m-1">
+                  <h3 class="card-title"><%= Dragon.find(reservation.dragon_id).name %></h3>
+                  <p class="card-text"> <%= Dragon.find(reservation.dragon_id).nature %></p>
+                  <h3 class="card-text text-end"> <strong>€ <%= Dragon.find(reservation.dragon_id).price_per_day %></strong></h3>
+                  <small class="card-text text-start"> <strong> date de début : <%= reservation.start_date %></strong></small> <br>
+                  <small class="card-text text-start"> <strong> date de fin : <%= reservation.end_date %></strong></small>
+                </div>
+              </div>
+            <%end %>
          <% else %>
            <%= link_to dragon_path(Dragon.find(reservation.dragon_id)) , class: "card m-2 position-relative" do %>
-
-              <div class="card" style ="object-fit-content">
+              <div class="card d-none" style ="object-fit-content">
+                <div class="card-body m-1">
+                  <%= Dragon.find(reservation.dragon_id).name %> est réservé par <%= User.find(reservation.renter_id).name %>
+                </div>
                 <%= cl_image_tag reservation.dragon.photo.key, height: 250, crop: :fill  %>
                 <div class="card-body m-1">
                   <h3 class="card-title"><%= Dragon.find(reservation.dragon_id).name %></h3>
