@@ -1,33 +1,29 @@
 <div class="container dragon py-5 d-flex justify-content-center" >
-
   <div class="card" style="width: 900px;">
-
     <div class="card-body">
-
 
     <div class="row">
       <div class="col 6 m-2">
-
         <%= cl_image_tag @dragon.photo.key, height: 300, width: 400, class: "shadow-lg", crop: :fill %>
-
-
-      </div>
+      </div >
 
         <div class="col 6 d-flex align-items-center">
           <div class="flex-grow-1">
+            <div class="me-4"><%= simple_form_for([@dragon, @booking]) do |f| %>
+              <%= f.input :start_date, as: :date, html5: true, label: "Début" %>
+              <%= f.input :end_date, as: :date, html5: true, label: "Fin" %>
 
-        <div class="me-4"><%= simple_form_for([@dragon, @booking]) do |f| %>
-          <%= f.input :start_date, as: :date, html5: true %>
-          <%= f.input :end_date, as: :date, html5: true %>
-          <%= link_to("Réserver", new_user_registration_path, {class: "btn btn-warning"}) %>
-        <% end %>
+              <% if user_signed_in? %>
+                <%= f.submit "Réserver", class: "btn btn-warning" %>
+              <% else %>
+                <%= link_to("Connexion", new_user_registration_path, {class: "btn btn-warning"}) %>
+              <% end %>
+            <% end %>
+            </div>
+          </div>
         </div>
-         </div>
+    </div>
 
-
-        </div>
-
-    </div class="row">
       <div class="col 12 m-2">
         <h1><%= @dragon.name%></h1>
       </div>
@@ -63,5 +59,31 @@
 
 
 
+<div class="container">
+  <section class="mx-auto my-5" style="max-width: 23rem;">
 
-<%# rajout icons aux natures des dragons - decaller prix - enlever contact et ajouter icon - orange plus clair %>
+    <div class="card">
+        <div class="card-body">
+        <h5 class="card-title font-weight-bold"><%= @dragon.price_per_day %> € / jour</h5>
+        <hr class="my-4" />
+        <div class="me"><%= simple_form_for([@dragon, @booking]) do |f| %>
+        <%= f.input :start_date, as: :date, html5: true, label: "Début" %>
+        <%= f.input :end_date, as: :date, html5: true, label: "Fin" %>
+          <% if user_signed_in? %>
+            <%= f.submit "Réserver", class: "btn btn-warning align-text-center" %>
+          <% else %>
+          <%= link_to("Connexion", new_user_registration_path, {class: "btn btn-warning"}) %>
+        <% end %>
+        <% end %>
+        <hr class="my-4" />
+        <h5 class="card-text text-center">
+        <%= @dragon.price_per_day %> x 5 jours </h5>
+        <hr class="my-4" />
+        <h5 class="card-text text-center">
+        Total = <%= @dragon.price_per_day %> € </h5>
+
+      </div>
+    </div>
+
+  </section>
+</div>
