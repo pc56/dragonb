@@ -14,6 +14,4 @@ class ProfilesController < ApplicationController
   def set_user
     @user = current_user
   end
-
-
 end
