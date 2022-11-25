@@ -1,13 +1,13 @@
   <div class= "container" >
     <div class="container m-3">
       <h1><strong>Notre sélection unique de Dragons</strong></h1>
-      <p>Louer son dragon sans se prendre la tête.</p>
+      <h3>Louer son dragon sans se prendre la tête.</h3>
       <div class="wrapper">
         <% @dragons.each do |dragon| %>
-            <div class="card m-2" style ="object-fit-content"><%= link_to dragon, class: "card" do %>
-              <%= cl_image_tag dragon.photo.key, height: 250, crop: :fill  %>
-              <div class="card-body m-1">
-                <h3 class="card-title"><%= dragon.name %></h3>
+            <div class="card-multi m-2" style ="object-fit-content"><%= link_to dragon do %>
+              <%= cl_image_tag dragon.photo.key, height: 250, crop: :fill, class:"card-img"  %>
+              <div class="card-index-body m-1">
+                <h3 class="card-index-title"><%= dragon.name %></h3>
                 <div>
                   <% if dragon.nature == "Air" %>
                     <%= image_tag("vent.png", size: "40x40", :style => 'background-color: #e9ecef; border: 2px solid black; border-radius: 50%; padding: 5px;') %>
@@ -27,6 +27,3 @@
       </div>
     </div>
 </div>
-
-
-
