@@ -13,7 +13,14 @@
         <% if user_signed_in? %>
           <li class="nav-item active">
 
-            <%= link_to "Dragons", "/dragons", class: "nav-link me-3" %>
+
+            <%= link_to "Accueil", root_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Profil", "/profile", class: "nav-link" %>
+
+            
+
           </li>
           <li class="nav-item dropdown">
             <%= image_tag "profil.jpeg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
